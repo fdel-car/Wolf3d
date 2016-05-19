@@ -6,7 +6,7 @@
 /*   By: fdel-car <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/14 19:47:36 by fdel-car          #+#    #+#             */
-/*   Updated: 2016/05/16 22:02:47 by fdel-car         ###   ########.fr       */
+/*   Updated: 2016/05/19 20:08:17 by fdel-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,6 @@ void	ft_verline(int x, t_glob *gl)
 {
 	int y;
 
-	gl->drawe = (gl->s_y / 2) + (gl->he_w / 2);
-	gl->draws = (gl->s_y / 2) - (gl->he_w / 2);
-	gl->color = 0xFF00FF;
 	y = gl->draws;
 	while (y <= gl->drawe)
 	{

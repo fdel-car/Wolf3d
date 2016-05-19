@@ -6,13 +6,13 @@
 #    By: fdel-car <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/02/25 16:12:54 by fdel-car          #+#    #+#              #
-#    Updated: 2016/05/16 16:13:00 by fdel-car         ###   ########.fr        #
+#    Updated: 2016/05/19 23:01:28 by fdel-car         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = wolf3d
 
-SRCS = main.c ft_draw.c ft_shortcut.c
+SRCS = main.c ft_draw.c ft_shortcut.c ft_map.c
 
 OBJS = $(SRCS:.c=.o)
 
