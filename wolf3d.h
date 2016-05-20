@@ -6,7 +6,7 @@
 /*   By: fdel-car <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/11 18:39:32 by fdel-car          #+#    #+#             */
-/*   Updated: 2016/05/19 23:09:18 by fdel-car         ###   ########.fr       */
+/*   Updated: 2016/05/20 20:26:54 by fdel-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,23 +29,31 @@ typedef struct	s_glob
 	double		posx;
 	double		posy;
 	double		dirx;
+	double		olddirx;
 	double		diry;
 	double		planex;
+	double		oldplanex;
 	double		planey;
 	double		time;
 	double		oldtime;
-	double		ang;
 	double		camx;
 	double		rayposx;
 	double		rayposy;
 	double		raydirx;
 	double		raydiry;
 	double		ftime;
+	int			sprint;
 	int			mapx;
 	int			mapy;
 	int			lineh;
 	int			draws;
 	int			drawe;
+	int			move_right;
+	int			move_left;
+	int			move_back;
+	int			move_front;
+	int			rot_right;
+	int			rot_left;
 	double		sdistx;
 	double		sdisty;
 	double		ddistx;
@@ -74,8 +82,11 @@ typedef struct	s_glob
 
 void			ft_verline(int x, t_glob *gl);
 void			ft_detect_wall(t_glob *gl);
-int				ft_key_press(t_glob *gl, int keycode);
-int				ft_key_release(t_glob *gl, int keycode);
+int				ft_key_press(int keycode, t_glob *gl);
+int				ft_key_release(int keycode, t_glob *gl);
+void			ft_move_rot(t_glob *gl);
+int				ft_close(t_glob *gl);
 void			ft_map(t_glob *gl);
+void			ft_color(t_glob *gl);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: fdel-car <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/14 21:04:37 by fdel-car          #+#    #+#             */
-/*   Updated: 2016/05/19 22:58:04 by fdel-car         ###   ########.fr       */
+/*   Updated: 2016/05/20 20:26:41 by fdel-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,42 @@ void	ft_change(t_glob *gl)
 			&(gl->endian));
 }
 
-int		ft_key(int keycode, t_glob *gl)
+int		ft_key_press(int keycode, t_glob *gl)
 {
+	if (keycode == 257)
+		gl->sprint = 1;
 	if (keycode == 53)
-		exit(0);
-	(void)gl;
+		ft_close(gl);
+	if (keycode == 13)
+		gl->move_front = 1;
+	if (keycode == 0)
+		gl->move_left = 1;
+	if (keycode == 1)
+		gl->move_back = 1;
+	if (keycode == 2)
+		gl->move_right = 1;
+	if (keycode == 123)
+		gl->rot_left = 1;
+	if (keycode == 124)
+		gl->rot_right = 1;
+	return (0);
+}
+
+int		ft_key_release(int keycode, t_glob *gl)
+{
+	if (keycode == 257)
+		gl->sprint = 0;
+	if (keycode == 0)
+		gl->move_left = 0;
+	if (keycode == 1)
+		gl->move_back = 0;
+	if (keycode == 13)
+		gl->move_front = 0;
+	if (keycode == 2)
+		gl->move_right = 0;
+	if (keycode == 123)
+		gl->rot_left = 0;
+	if (keycode == 124)
+		gl->rot_right = 0;
 	return (0);
 }
