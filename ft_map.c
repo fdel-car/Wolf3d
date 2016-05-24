@@ -6,7 +6,7 @@
 /*   By: fdel-car <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/19 22:32:35 by fdel-car          #+#    #+#             */
-/*   Updated: 2016/05/19 23:23:32 by fdel-car         ###   ########.fr       */
+/*   Updated: 2016/05/24 19:03:47 by fdel-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	ft_map(t_glob *gl)
 
 	gl->data = 1;
 	gl->fd = open("map", O_RDONLY);
-	j = 0;
+	j = -1;
 	while (get_next_line(gl->fd, &str) == 1)
 	{
 		tab = ft_strsplit(str, ' ');
@@ -51,10 +51,7 @@ void	ft_map(t_glob *gl)
 			gl->data = 0;
 		}
 		else
-		{
-			make_map(gl, j, tab);
-			j++;
-		}
+			make_map(gl, ++j, tab);
 		i = 0;
 		while (tab[i])
 			free(tab[i++]);

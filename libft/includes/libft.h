@@ -6,7 +6,7 @@
 /*   By: fdel-car <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/24 17:26:34 by fdel-car          #+#    #+#             */
-/*   Updated: 2016/05/03 15:56:42 by fdel-car         ###   ########.fr       */
+/*   Updated: 2016/05/24 18:12:49 by fdel-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,5 +91,9 @@ void				ft_lstaddn(t_list **alst, t_list *new, size_t n);
 void				ft_swap(int a, int b);
 void				ft_swap_string(char **s1_ptr, char **s2_ptr);
 void				ft_putstr_lst(t_list **alst);
+char				*ft_itoa_base(unsigned long long int nbr, int base);
+char				*ft_itoa_base_maj(unsigned long long int nbr, int base);
+int					ft_atoi_base(char *str, int base);
+
 
 #endif

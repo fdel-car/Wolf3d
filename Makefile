@@ -6,13 +6,14 @@
 #    By: fdel-car <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/02/25 16:12:54 by fdel-car          #+#    #+#              #
-#    Updated: 2016/05/20 19:55:56 by fdel-car         ###   ########.fr        #
+#    Updated: 2016/05/24 19:20:41 by fdel-car         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = wolf3d
 
-SRCS = main.c ft_draw.c ft_shortcut.c ft_map.c ft_move_rot.c ft_color.c
+SRCS = main.c ft_draw.c ft_shortcut.c ft_map.c ft_move_rot.c ft_color.c \
+	   ft_raycast.c
 
 OBJS = $(SRCS:.c=.o)
 
