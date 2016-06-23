@@ -6,7 +6,7 @@
 /*   By: fdel-car <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/11 18:39:32 by fdel-car          #+#    #+#             */
-/*   Updated: 2016/05/24 21:15:25 by fdel-car         ###   ########.fr       */
+/*   Updated: 2016/05/27 17:27:00 by fdel-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,10 +44,16 @@ typedef struct	s_glob
 	double		raydiry;
 	double		ftime;
 	double		wallx;
+	int			mini_x;
+	int			mini_y;
 	int			tex_x;
 	int			tex_y;
 	int			texw;
 	int			texh;
+	int			texw_s;
+	int			texh_s;
+	int			texw_me;
+	int			texh_me;
 	int			sprint;
 	int			mapx;
 	int			mapy;
@@ -78,24 +84,30 @@ typedef struct	s_glob
 	void		*mlx;
 	void		*win;
 	void		*img;
+	void		*minimap;
 	char		*disp;
+	char		*disp2;
+	int			iter;
 	int			bpp;
+	int			bpp2;
 	int			sizeline;
+	int			sizeline2;
 	int			endian;
+	int			endian2;
 	int			color;
+	int			temp;
+	int			temp2;
+	int			temp3;
+	int			temp4;
 	int			**map;
 	int			*tex_grey;
 	int			*tex_wood;
-	int			*tex_brick;
+	int			*tex_sky;
+	int			*tex_moi;
 }				t_glob;
 
 typedef	struct	s_bitmap
 {
-	int		padding;
-	char	*temp;
-	char	*temp2;
-	char	*temp3;
-	int		nbr;
 	int		iter;
 	int		iter2;
 	int		iter3;
@@ -108,12 +120,20 @@ int				ft_key_release(int keycode, t_glob *gl);
 void			ft_move_rot(t_glob *gl);
 int				ft_close(t_glob *gl);
 void			ft_map(t_glob *gl);
+void			ft_minimap(t_glob *gl);
 void			ft_color(t_glob *gl);
 void			texture_grey(t_glob *gl, t_bitmap *bmp);
+void			texture_me(t_glob *gl, t_bitmap *bmp);
 void			ft_init_raycast(t_glob *gl);
 void			ft_rayhandle(t_glob *gl);
 void			dda(t_glob *gl);
 void			handle_wall(t_glob *gl);
 void			texture_wood(t_glob *gl, t_bitmap *bmp);
+void			ft_setpixel2(t_glob *gl, int x, int y, int color);
+void			ft_posmap(t_glob *gl);
+void			ft_skybox(t_glob *gl, t_bitmap *bmp);
+void			ft_unload(t_glob *gl, char *str);
+void			ft_unload2(t_glob *gl, char *str);
+void			loop_tex_me(t_bitmap *bmp, t_glob *gl, FILE *img, int *tex);
 
 #endif

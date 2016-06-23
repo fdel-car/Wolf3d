@@ -6,13 +6,13 @@
 /*   By: fdel-car <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/24 23:34:47 by fdel-car          #+#    #+#             */
-/*   Updated: 2016/05/02 21:17:36 by fdel-car         ###   ########.fr       */
+/*   Updated: 2016/05/30 16:40:30 by fdel-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		unload2(t_glob *gl, char t, long long int i)
+int		unload2(t_print *gl, char t, long long int i)
 {
 	if (gl->p < 0)
 	{
@@ -36,7 +36,7 @@ int		unload2(t_glob *gl, char t, long long int i)
 	return (unload3(gl, t, i));
 }
 
-int		unload(t_glob *gl, char t, long long int i)
+int		unload(t_print *gl, char t, long long int i)
 {
 	if (gl->p < 0)
 	{
@@ -65,7 +65,7 @@ int		unload(t_glob *gl, char t, long long int i)
 	return (unload2(gl, t, i));
 }
 
-int		ft_noiflag(va_list ap, t_glob *gl, char t)
+int		ft_noiflag(va_list ap, t_print *gl, char t)
 {
 	long long int	i;
 
@@ -88,7 +88,7 @@ int		ft_noiflag(va_list ap, t_glob *gl, char t)
 	return (unload(gl, t, i));
 }
 
-int		ft_flag_int(char const *fl, va_list ap, t_glob *gl, char t)
+int		ft_flag_int(char const *fl, va_list ap, t_print *gl, char t)
 {
 	while (fl[gl->l - gl->f] == ' ' || fl[gl->l - gl->f] == '+' ||
 			fl[gl->l - gl->f] == '#' || fl[gl->l - gl->f] == '0' ||
@@ -112,7 +112,7 @@ int		ft_flag_int(char const *fl, va_list ap, t_glob *gl, char t)
 		return (ft_noiflag(ap, gl, t));
 }
 
-int		ft_int_short(char const *fl, va_list ap, t_glob *gl)
+int		ft_int_short(char const *fl, va_list ap, t_print *gl)
 {
 	gl->f = 2;
 	gl->i = 0;

@@ -6,7 +6,7 @@
 /*   By: fdel-car <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/08 18:03:23 by fdel-car          #+#    #+#             */
-/*   Updated: 2016/05/02 21:00:39 by fdel-car         ###   ########.fr       */
+/*   Updated: 2016/05/30 16:41:47 by fdel-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int		ft_wstrlen(wchar_t const *s)
 	return (o);
 }
 
-int		ft_nowflag(va_list ap, t_glob *gl)
+int		ft_nowflag(va_list ap, t_print *gl)
 {
 	int		temp;
 	wchar_t	*str;
@@ -56,7 +56,7 @@ int		ft_nowflag(va_list ap, t_glob *gl)
 	return (gl->p + ft_strlen(gl->s) + gl->i);
 }
 
-int		ft_flags_wide(char const *fl, va_list ap, t_glob *gl)
+int		ft_flags_wide(char const *fl, va_list ap, t_print *gl)
 {
 	gl->i = 0;
 	ft_unload_fl(fl, gl);
@@ -79,7 +79,7 @@ int		ft_flags_wide(char const *fl, va_list ap, t_glob *gl)
 		return (ft_nowflag(ap, gl));
 }
 
-int		ft_widestring(char const *fl, va_list ap, t_glob *gl)
+int		ft_widestring(char const *fl, va_list ap, t_print *gl)
 {
 	gl->f = 2;
 	if (gl->s_wide == 0)
@@ -101,7 +101,7 @@ int		ft_widestring(char const *fl, va_list ap, t_glob *gl)
 	return (gl->flag);
 }
 
-int		ft_string(char const *fl, va_list ap, t_glob *gl)
+int		ft_string(char const *fl, va_list ap, t_print *gl)
 {
 	gl->f = 2;
 	if (fl[gl->l - gl->f] == 'l')

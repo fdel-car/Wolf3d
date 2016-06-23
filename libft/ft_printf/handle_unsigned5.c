@@ -6,13 +6,13 @@
 /*   By: fdel-car <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/02 18:39:19 by fdel-car          #+#    #+#             */
-/*   Updated: 2016/05/02 18:51:29 by fdel-car         ###   ########.fr       */
+/*   Updated: 2016/05/30 16:42:59 by fdel-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		ft_unload_unsc(t_glob *gl, va_list ap)
+int		ft_unload_unsc(t_print *gl, va_list ap)
 {
 	unsigned char u;
 
@@ -30,7 +30,7 @@ int		ft_unload_unsc(t_glob *gl, va_list ap)
 	return (gl->space + ft_strlen(gl->s) + gl->i);
 }
 
-int		ft_uns_char(char const *fl, va_list ap, t_glob *gl)
+int		ft_uns_char(char const *fl, va_list ap, t_print *gl)
 {
 	gl->f = 2;
 	gl->i = 0;

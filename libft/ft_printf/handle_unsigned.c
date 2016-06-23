@@ -6,13 +6,13 @@
 /*   By: fdel-car <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/23 17:20:17 by fdel-car          #+#    #+#             */
-/*   Updated: 2016/05/02 21:09:46 by fdel-car         ###   ########.fr       */
+/*   Updated: 2016/05/30 16:42:07 by fdel-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		ft_noullflag(va_list ap, t_glob *gl)
+int		ft_noullflag(va_list ap, t_print *gl)
 {
 	unsigned long long int	u;
 	int						space;
@@ -39,7 +39,7 @@ int		ft_noullflag(va_list ap, t_glob *gl)
 	return (space + ft_strlen(gl->s) + gl->i);
 }
 
-int		ft_flag_unsll(char const *fl, va_list ap, t_glob *gl)
+int		ft_flag_unsll(char const *fl, va_list ap, t_print *gl)
 {
 	while (fl[gl->l - gl->f] == ' ' || fl[gl->l - gl->f] == '+' ||
 			fl[gl->l - gl->f] == '#' || fl[gl->l - gl->f] == '-' ||
@@ -59,7 +59,7 @@ int		ft_flag_unsll(char const *fl, va_list ap, t_glob *gl)
 		return (ft_noullflag(ap, gl));
 }
 
-int		ft_uns_long_long(char const *fl, va_list ap, t_glob *gl)
+int		ft_uns_long_long(char const *fl, va_list ap, t_print *gl)
 {
 	gl->f = 2;
 	gl->i = 0;
@@ -82,7 +82,7 @@ int		ft_uns_long_long(char const *fl, va_list ap, t_glob *gl)
 	return (gl->flag);
 }
 
-int		ft_uns_long(char const *fl, va_list ap, t_glob *gl)
+int		ft_uns_long(char const *fl, va_list ap, t_print *gl)
 {
 	gl->f = 2;
 	gl->i = 0;
@@ -109,7 +109,7 @@ int		ft_uns_long(char const *fl, va_list ap, t_glob *gl)
 	return (gl->flag);
 }
 
-int		ft_unsigned(char const *fl, va_list ap, t_glob *gl)
+int		ft_unsigned(char const *fl, va_list ap, t_print *gl)
 {
 	gl->f = 2;
 	gl->i = 0;

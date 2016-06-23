@@ -6,13 +6,13 @@
 /*   By: fdel-car <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/30 16:18:21 by fdel-car          #+#    #+#             */
-/*   Updated: 2016/05/02 21:22:52 by fdel-car         ###   ########.fr       */
+/*   Updated: 2016/05/30 16:41:28 by fdel-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		unload_percent(t_glob *gl)
+int		unload_percent(t_print *gl)
 {
 	ft_putstr(gl->s);
 	ft_putchar('%');
@@ -24,7 +24,7 @@ int		unload_percent(t_glob *gl)
 	return (1 + gl->i + ft_strlen(gl->s));
 }
 
-int		nopercentflag(t_glob *gl)
+int		nopercentflag(t_print *gl)
 {
 	ft_putstr(gl->s);
 	while (gl->larg > 1 && gl->i++ < 2147483647)
@@ -36,7 +36,7 @@ int		nopercentflag(t_glob *gl)
 	return (1 + gl->i + ft_strlen(gl->s));
 }
 
-int		ft_flag_percent(char const *fl, t_glob *gl)
+int		ft_flag_percent(char const *fl, t_print *gl)
 {
 	while (fl[gl->l - gl->f] == ' ' || fl[gl->l - gl->f] == '+' ||
 			fl[gl->l - gl->f] == '#' || fl[gl->l - gl->f] == '0' ||
@@ -60,7 +60,7 @@ int		ft_flag_percent(char const *fl, t_glob *gl)
 		return (nopercentflag(gl));
 }
 
-int		ft_percent(char const *fl, va_list ap, t_glob *gl)
+int		ft_percent(char const *fl, va_list ap, t_print *gl)
 {
 	gl->f = 2;
 	gl->i = 0;

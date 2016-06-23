@@ -6,7 +6,7 @@
 /*   By: fdel-car <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/11 18:38:43 by fdel-car          #+#    #+#             */
-/*   Updated: 2016/05/24 21:19:18 by fdel-car         ###   ########.fr       */
+/*   Updated: 2016/05/27 17:32:16 by fdel-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,11 +55,12 @@ void	ft_detect_wall(t_glob *gl)
 	gl->ftime = (gl->time - gl->oldtime) / CLOCKS_PER_SEC;
 	gl->ms = gl->ftime * 5.0;
 	gl->rs = gl->ftime * 3.0;
+	ft_minimap(gl);
+	ft_posmap(gl);
 	mlx_put_image_to_window(gl->mlx, gl->win, gl->img, 0, 0);
+	mlx_put_image_to_window(gl->mlx, gl->win, gl->minimap, 1170, 600);
 	mlx_destroy_image(gl->mlx, gl->img);
-	mlx_string_put(gl->mlx, gl->win, 20, 20, 0xFFFFFF, "FPS : ");
-	mlx_string_put(gl->mlx, gl->win, 80, 20, 0xFFFFFF,
-			ft_itoa(1.0 / gl->ftime));
+	mlx_destroy_image(gl->mlx, gl->minimap);
 }
 
 int		ft_wolf3d(t_glob *gl)
@@ -69,6 +70,9 @@ int		ft_wolf3d(t_glob *gl)
 			&(gl->endian));
 	ft_move_rot(gl);
 	ft_detect_wall(gl);
+	mlx_string_put(gl->mlx, gl->win, 20, 20, 0xFFFFFF, "FPS : ");
+	mlx_string_put(gl->mlx, gl->win, 80, 20, 0xFFFFFF,
+			ft_itoa(1.0 / gl->ftime));
 	if (gl->sprint)
 		gl->ms = gl->ms * 2;
 	return (0);
@@ -84,6 +88,8 @@ int		ft_close(t_glob *gl)
 	free(gl->map);
 	free(gl->tex_grey);
 	free(gl->tex_wood);
+	free(gl->tex_sky);
+	free(gl->tex_moi);
 	free(gl);
 	exit(0);
 }
@@ -94,10 +100,16 @@ int		main(void)
 	t_bitmap	*bmp;
 
 	gl = (t_glob *)malloc(sizeof(t_glob));
+	if (!gl)
+		return (0);
 	bmp = (t_bitmap *)malloc(sizeof(t_bitmap));
+	if (!bmp)
+		return (0);
 	ft_init(gl);
 	texture_grey(gl, bmp);
 	texture_wood(gl, bmp);
+	texture_me(gl, bmp);
+	ft_skybox(gl, bmp);
 	gl->mlx = mlx_init();
 	gl->win = mlx_new_window(gl->mlx, gl->s_x, gl->s_y, "Wolf 3D");
 	ft_wolf3d(gl);

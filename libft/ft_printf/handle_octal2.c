@@ -6,13 +6,13 @@
 /*   By: fdel-car <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/28 19:30:08 by fdel-car          #+#    #+#             */
-/*   Updated: 2016/05/02 21:18:43 by fdel-car         ###   ########.fr       */
+/*   Updated: 2016/05/30 16:41:17 by fdel-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		ft_unload_oct3(t_glob *gl, char *str, unsigned long long int o)
+int		ft_unload_oct3(t_print *gl, char *str, unsigned long long int o)
 {
 	str = ft_itoa_base(o, 8);
 	gl->space = ft_strlen(str);
@@ -38,7 +38,7 @@ int		ft_unload_oct3(t_glob *gl, char *str, unsigned long long int o)
 	return (gl->space + gl->i + ft_strlen(gl->s));
 }
 
-void	ft_unload_oct2(t_glob *gl, char *str, unsigned long long int o)
+void	ft_unload_oct2(t_print *gl, char *str, unsigned long long int o)
 {
 	while (gl->larg > (gl->space + gl->hash) && gl->i < 2147483647
 			&& gl->larg > gl->p)
@@ -67,7 +67,7 @@ void	ft_unload_oct2(t_glob *gl, char *str, unsigned long long int o)
 	}
 }
 
-int		ft_unload_oct(t_glob *gl, char *str, unsigned long long int o)
+int		ft_unload_oct(t_print *gl, char *str, unsigned long long int o)
 {
 	str = ft_itoa_base(o, 8);
 	gl->space = ft_strlen(str);
@@ -93,7 +93,7 @@ int		ft_unload_oct(t_glob *gl, char *str, unsigned long long int o)
 	return (gl->space + gl->i + ft_strlen(gl->s));
 }
 
-int		ft_nooflag(va_list ap, t_glob *gl, char t)
+int		ft_nooflag(va_list ap, t_print *gl, char t)
 {
 	char					*str;
 	unsigned long long int	o;
@@ -112,7 +112,7 @@ int		ft_nooflag(va_list ap, t_glob *gl, char t)
 	return (ft_unload_oct(gl, str, o));
 }
 
-int		ft_octal_char(char const *fl, va_list ap, t_glob *gl)
+int		ft_octal_char(char const *fl, va_list ap, t_print *gl)
 {
 	gl->f = 2;
 	gl->i = 0;

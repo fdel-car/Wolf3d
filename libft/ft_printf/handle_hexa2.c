@@ -6,13 +6,13 @@
 /*   By: fdel-car <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/28 19:30:08 by fdel-car          #+#    #+#             */
-/*   Updated: 2016/05/02 21:21:50 by fdel-car         ###   ########.fr       */
+/*   Updated: 2016/05/30 16:35:37 by fdel-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		ft_unload_hex3(t_glob *gl, char *str, unsigned long long int x, char t)
+int		ft_unload_hex3(t_print *gl, char *str, unsigned long long int x, char t)
 {
 	if (x == 0)
 	{
@@ -38,7 +38,7 @@ int		ft_unload_hex3(t_glob *gl, char *str, unsigned long long int x, char t)
 	return (unload_hex(gl, str, x, t));
 }
 
-void	ft_unload_hex2(t_glob *gl, char *str, unsigned long long int x, char t)
+void	ft_unload_hex2(t_print *gl, char *str, unsigned long long int x, char t)
 {
 	while (gl->larg > (gl->space + gl->hash) && gl->i < 2147483647
 			&& gl->larg > gl->p)
@@ -61,7 +61,7 @@ void	ft_unload_hex2(t_glob *gl, char *str, unsigned long long int x, char t)
 	unload_hex2(gl, x, str);
 }
 
-int		ft_unload_hex(t_glob *gl, char *str, unsigned long long int x, char t)
+int		ft_unload_hex(t_print *gl, char *str, unsigned long long int x, char t)
 {
 	if (!ft_isupper(t))
 		str = ft_itoa_base(x, 16);
@@ -89,7 +89,7 @@ int		ft_unload_hex(t_glob *gl, char *str, unsigned long long int x, char t)
 	return (gl->space + gl->i + ft_strlen(gl->s));
 }
 
-int		ft_nohflag(va_list ap, t_glob *gl, char t)
+int		ft_nohflag(va_list ap, t_print *gl, char t)
 {
 	unsigned long long int	x;
 
@@ -117,7 +117,7 @@ int		ft_nohflag(va_list ap, t_glob *gl, char t)
 	return (ft_unload_hex(gl, NULL, x, t));
 }
 
-int		ft_hexa_char(char const *fl, va_list ap, t_glob *gl)
+int		ft_hexa_char(char const *fl, va_list ap, t_print *gl)
 {
 	gl->f = 2;
 	gl->i = 0;

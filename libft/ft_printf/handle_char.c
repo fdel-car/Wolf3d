@@ -6,13 +6,13 @@
 /*   By: fdel-car <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/20 17:57:06 by fdel-car          #+#    #+#             */
-/*   Updated: 2016/05/02 19:46:09 by fdel-car         ###   ########.fr       */
+/*   Updated: 2016/05/30 16:34:18 by fdel-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		ft_nocflag(va_list ap, t_glob *gl, int lc)
+int		ft_nocflag(va_list ap, t_print *gl, int lc)
 {
 	int		c;
 	int		l;
@@ -27,7 +27,7 @@ int		ft_nocflag(va_list ap, t_glob *gl, int lc)
 	return (l + ft_strlen(gl->s) + gl->i);
 }
 
-int		ft_flag_char(char const *fl, va_list ap, t_glob *gl, int lc)
+int		ft_flag_char(char const *fl, va_list ap, t_print *gl, int lc)
 {
 	int c;
 	int l;
@@ -49,7 +49,7 @@ int		ft_flag_char(char const *fl, va_list ap, t_glob *gl, int lc)
 		return (ft_nocflag(ap, gl, lc));
 }
 
-int		ft_widechar(char const *fl, va_list ap, t_glob *gl)
+int		ft_widechar(char const *fl, va_list ap, t_print *gl)
 {
 	gl->f = 2;
 	if (fl[gl->l - gl->f] == 'l')
@@ -68,7 +68,7 @@ int		ft_widechar(char const *fl, va_list ap, t_glob *gl)
 	return (gl->flag);
 }
 
-int		ft_char(char const *fl, va_list ap, t_glob *gl)
+int		ft_char(char const *fl, va_list ap, t_print *gl)
 {
 	gl->f = 2;
 	if (fl[gl->l - gl->f] == 'l')

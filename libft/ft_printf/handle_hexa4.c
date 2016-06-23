@@ -6,13 +6,13 @@
 /*   By: fdel-car <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/29 19:59:37 by fdel-car          #+#    #+#             */
-/*   Updated: 2016/05/01 18:37:01 by fdel-car         ###   ########.fr       */
+/*   Updated: 2016/05/30 16:39:15 by fdel-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		unload_hex(t_glob *gl, char *str, unsigned long long int x, char t)
+int		unload_hex(t_print *gl, char *str, unsigned long long int x, char t)
 {
 	if (gl->hash == 2 && gl->p != 0 && x != 0)
 	{
@@ -40,7 +40,7 @@ int		unload_hex(t_glob *gl, char *str, unsigned long long int x, char t)
 	return (gl->space + gl->i + ft_strlen(gl->s));
 }
 
-void	unload_hex2(t_glob *gl, unsigned long long int x, char *str)
+void	unload_hex2(t_print *gl, unsigned long long int x, char *str)
 {
 	while (gl->p > gl->space)
 	{
@@ -61,7 +61,7 @@ void	unload_hex2(t_glob *gl, unsigned long long int x, char *str)
 	}
 }
 
-void	unload_hex3(t_glob *gl, char *str, unsigned long long x, char t)
+void	unload_hex3(t_print *gl, char *str, unsigned long long x, char t)
 {
 	while (gl->larg > (gl->space + gl->hash) && gl->i < 2147483647)
 	{

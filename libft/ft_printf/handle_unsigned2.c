@@ -6,13 +6,13 @@
 /*   By: fdel-car <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/24 23:34:47 by fdel-car          #+#    #+#             */
-/*   Updated: 2016/04/28 17:17:33 by fdel-car         ###   ########.fr       */
+/*   Updated: 2016/05/30 16:42:15 by fdel-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		ft_noulflag(va_list ap, t_glob *gl)
+int		ft_noulflag(va_list ap, t_print *gl)
 {
 	unsigned long int	u;
 	int					space;
@@ -39,7 +39,7 @@ int		ft_noulflag(va_list ap, t_glob *gl)
 	return (space + ft_strlen(gl->s) + gl->i);
 }
 
-int		ft_flag_unsl(char const *fl, va_list ap, t_glob *gl)
+int		ft_flag_unsl(char const *fl, va_list ap, t_print *gl)
 {
 	unsigned long int u;
 
@@ -64,7 +64,7 @@ int		ft_flag_unsl(char const *fl, va_list ap, t_glob *gl)
 		return (ft_noulflag(ap, gl));
 }
 
-int		ft_nouflag(va_list ap, t_glob *gl)
+int		ft_nouflag(va_list ap, t_print *gl)
 {
 	unsigned int	u;
 
@@ -93,7 +93,7 @@ int		ft_nouflag(va_list ap, t_glob *gl)
 	return (gl->space + ft_strlen(gl->s) + gl->i);
 }
 
-int		ft_flag_uns(char const *fl, va_list ap, t_glob *gl)
+int		ft_flag_uns(char const *fl, va_list ap, t_print *gl)
 {
 	unsigned int u;
 

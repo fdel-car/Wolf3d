@@ -6,13 +6,13 @@
 /*   By: fdel-car <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/28 17:49:06 by fdel-car          #+#    #+#             */
-/*   Updated: 2016/05/02 21:27:58 by fdel-car         ###   ########.fr       */
+/*   Updated: 2016/05/30 16:33:53 by fdel-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		ft_unload_binaire(t_glob *gl, unsigned long long int b, char t)
+int		ft_unload_binaire(t_print *gl, unsigned long long int b, char t)
 {
 	char *str;
 
@@ -37,7 +37,7 @@ int		ft_unload_binaire(t_glob *gl, unsigned long long int b, char t)
 	return (ft_strlen(gl->s) + ft_strlen(str) + gl->i);
 }
 
-int		nobflag(va_list ap, t_glob *gl, char t)
+int		nobflag(va_list ap, t_print *gl, char t)
 {
 	unsigned long long int	b;
 	char					*str;
@@ -65,7 +65,7 @@ int		nobflag(va_list ap, t_glob *gl, char t)
 	return (ft_strlen(gl->s) + ft_strlen(str) + gl->i);
 }
 
-int		ft_binaire_flag(char const *fl, va_list ap, t_glob *gl, char t)
+int		ft_binaire_flag(char const *fl, va_list ap, t_print *gl, char t)
 {
 	unsigned long long int	b;
 
@@ -80,7 +80,7 @@ int		ft_binaire_flag(char const *fl, va_list ap, t_glob *gl, char t)
 	return (nobflag(ap, gl, t));
 }
 
-int		ft_binaire_maj(char const *fl, va_list ap, t_glob *gl)
+int		ft_binaire_maj(char const *fl, va_list ap, t_print *gl)
 {
 	gl->f = 2;
 	gl->i = 0;
@@ -103,7 +103,7 @@ int		ft_binaire_maj(char const *fl, va_list ap, t_glob *gl)
 	return (gl->flag);
 }
 
-int		ft_binaire(char const *fl, va_list ap, t_glob *gl)
+int		ft_binaire(char const *fl, va_list ap, t_print *gl)
 {
 	gl->f = 2;
 	gl->i = 0;

@@ -6,13 +6,13 @@
 /*   By: fdel-car <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/24 23:34:47 by fdel-car          #+#    #+#             */
-/*   Updated: 2016/05/01 18:30:30 by fdel-car         ###   ########.fr       */
+/*   Updated: 2016/05/30 16:40:38 by fdel-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		unload6(t_glob *gl, char t, long long int i)
+int		unload6(t_print *gl, char t, long long int i)
 {
 	if (ft_signfl(gl, i) || i < 0 || (gl->fl_s == 1 && i >= 0))
 	{
@@ -36,7 +36,7 @@ int		unload6(t_glob *gl, char t, long long int i)
 	return (unload7(gl, t, i));
 }
 
-int		unload5(t_glob *gl, char t, va_list ap)
+int		unload5(t_print *gl, char t, va_list ap)
 {
 	long long int i;
 
@@ -55,7 +55,7 @@ int		unload5(t_glob *gl, char t, va_list ap)
 	return (unload6(gl, t, i));
 }
 
-int		unload4(t_glob *gl, char t, long long int i)
+int		unload4(t_print *gl, char t, long long int i)
 {
 	if (i == 0 && gl->p == 0)
 	{
@@ -80,7 +80,7 @@ int		unload4(t_glob *gl, char t, long long int i)
 	return (gl->space + ft_strlen(gl->s) + gl->i + gl->neg);
 }
 
-int		unload3(t_glob *gl, char t, long long int i)
+int		unload3(t_print *gl, char t, long long int i)
 {
 	if (gl->p >= 0)
 	{
@@ -109,7 +109,7 @@ int		unload3(t_glob *gl, char t, long long int i)
 	return (unload4(gl, t, i));
 }
 
-int		ft_int_char(char const *fl, va_list ap, t_glob *gl)
+int		ft_int_char(char const *fl, va_list ap, t_print *gl)
 {
 	gl->f = 2;
 	gl->i = 0;

@@ -6,13 +6,13 @@
 /*   By: fdel-car <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/24 19:12:51 by fdel-car          #+#    #+#             */
-/*   Updated: 2016/05/03 15:50:55 by fdel-car         ###   ########.fr       */
+/*   Updated: 2016/05/30 17:04:56 by fdel-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/ft_printf.h"
+#include "includes/libft.h"
 
-int		ft_signfl(t_glob *gl, long long int in)
+int		ft_signfl(t_print *gl, long long int in)
 {
 	if (gl->sign == 0 || in < 0)
 		return (0);

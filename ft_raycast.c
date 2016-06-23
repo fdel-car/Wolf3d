@@ -6,7 +6,7 @@
 /*   By: fdel-car <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/24 19:13:47 by fdel-car          #+#    #+#             */
-/*   Updated: 2016/05/24 19:25:05 by fdel-car         ###   ########.fr       */
+/*   Updated: 2016/05/27 17:25:00 by fdel-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,26 @@ void	dda(t_glob *gl)
 	}
 }
 
+void	handle_tex(t_glob *gl)
+{
+	if (gl->map[gl->mapx][gl->mapy] == 4)
+	{
+		gl->tex_x = (int)(gl->wallx * (double)(gl->texw_me));
+		if (gl->side == 0 && gl->raydirx > 0)
+			gl->tex_x = gl->texw_me - gl->tex_x - 1;
+		if (gl->side == 1 && gl->raydiry < 0)
+			gl->tex_x = gl->texw_me - gl->tex_x - 1;
+	}
+	else
+	{
+		gl->tex_x = (int)(gl->wallx * (double)(gl->texw));
+		if (gl->side == 0 && gl->raydirx > 0)
+			gl->tex_x = gl->texw - gl->tex_x - 1;
+		if (gl->side == 1 && gl->raydiry < 0)
+			gl->tex_x = gl->texw - gl->tex_x - 1;
+	}
+}
+
 void	handle_wall(t_glob *gl)
 {
 	if (gl->side == 0)
@@ -90,9 +110,5 @@ void	handle_wall(t_glob *gl)
 	else
 		gl->wallx = gl->rayposx + gl->pwd * gl->raydirx;
 	gl->wallx -= (int)gl->wallx;
-	gl->tex_x = (int)(gl->wallx * (double)(gl->texw));
-	if (gl->side == 0 && gl->raydirx > 0)
-		gl->tex_x = gl->texw - gl->tex_x - 1;
-	if (gl->side == 1 && gl->raydiry < 0)
-		gl->tex_x = gl->texw - gl->tex_x - 1;
+	handle_tex(gl);
 }

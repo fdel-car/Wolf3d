@@ -6,7 +6,7 @@
 /*   By: fdel-car <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/24 17:26:34 by fdel-car          #+#    #+#             */
-/*   Updated: 2016/05/24 18:12:49 by fdel-car         ###   ########.fr       */
+/*   Updated: 2016/05/30 17:08:09 by fdel-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,13 @@
 # define LIBFT_H
 
 # include <string.h>
-
-typedef struct		s_list
-{
-	void			*content;
-	size_t			content_size;
-	struct s_list	*next;
-}					t_list;
+# include "ft_printf.h"
+# include "get_next_line.h"
 
 void				ft_strputtab(char **tab);
 void				*ft_memalloc(size_t size);
 void				*ft_memset(void *s, int c, size_t n);
-void				ft_putchar(unsigned int c);
+int					ft_putchar(unsigned int c);
 void				ft_putstr(char const *s);
 void				ft_putendl(char const *s);
 void				ft_putnbr(long long int n);
@@ -78,22 +73,12 @@ void				*ft_memmove(void *dest, const void *src, size_t n);
 int					ft_memcmp(const void *s1, const void *s2, size_t n);
 void				*ft_memchr(const void *s, int c, size_t n);
 void				ft_bzero(void *s, size_t n);
-t_list				*ft_lstnew(void const *content, size_t content_size);
-void				ft_lstdelone(t_list **alst, void (*del)(void *, size_t));
-void				ft_lstdel(t_list **alst, void (*del)(void *, size_t));
-void				ft_lstiter(t_list *lst, void (*f)(t_list *elem));
-t_list				*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
-void				ft_lstadd(t_list **alst, t_list *new);
-void				ft_lstaddend(t_list **alst, t_list *new);
 int					ft_isupper(int c);
 int					ft_islower(int c);
-void				ft_lstaddn(t_list **alst, t_list *new, size_t n);
-void				ft_swap(int a, int b);
+void				ft_swap(int *a, int *b);
 void				ft_swap_string(char **s1_ptr, char **s2_ptr);
-void				ft_putstr_lst(t_list **alst);
 char				*ft_itoa_base(unsigned long long int nbr, int base);
 char				*ft_itoa_base_maj(unsigned long long int nbr, int base);
 int					ft_atoi_base(char *str, int base);
-
 
 #endif

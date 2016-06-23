@@ -6,13 +6,13 @@
 /*   By: fdel-car <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/28 17:07:48 by fdel-car          #+#    #+#             */
-/*   Updated: 2016/05/02 18:53:04 by fdel-car         ###   ########.fr       */
+/*   Updated: 2016/05/30 16:42:24 by fdel-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		ft_flag_unss(char const *fl, va_list ap, t_glob *gl)
+int		ft_flag_unss(char const *fl, va_list ap, t_print *gl)
 {
 	while (fl[gl->l - gl->f] == ' ' || fl[gl->l - gl->f] == '+' ||
 			fl[gl->l - gl->f] == '#' || fl[gl->l - gl->f] == '-' ||
@@ -32,7 +32,7 @@ int		ft_flag_unss(char const *fl, va_list ap, t_glob *gl)
 		return (ft_nousflag(ap, gl));
 }
 
-int		ft_uns_short(char const *fl, va_list ap, t_glob *gl)
+int		ft_uns_short(char const *fl, va_list ap, t_print *gl)
 {
 	gl->f = 2;
 	gl->i = 0;
@@ -59,7 +59,7 @@ int		ft_uns_short(char const *fl, va_list ap, t_glob *gl)
 	return (gl->flag);
 }
 
-int		ft_unload_uns(t_glob *gl, va_list ap)
+int		ft_unload_uns(t_print *gl, va_list ap)
 {
 	unsigned long long u;
 
@@ -77,7 +77,7 @@ int		ft_unload_uns(t_glob *gl, va_list ap)
 	return (gl->space + ft_strlen(gl->s) + gl->i);
 }
 
-int		ft_unload_fl(char const *fl, t_glob *gl)
+int		ft_unload_fl(char const *fl, t_print *gl)
 {
 	while (fl[gl->l - gl->f] == ' ' || fl[gl->l - gl->f] == '+' ||
 			fl[gl->l - gl->f] == '#' || fl[gl->l - gl->f] == '-' ||
@@ -96,7 +96,7 @@ int		ft_unload_fl(char const *fl, t_glob *gl)
 	return (0);
 }
 
-int		ft_unload_fl_hex(char const *fl, t_glob *gl)
+int		ft_unload_fl_hex(char const *fl, t_print *gl)
 {
 	while (fl[gl->l - gl->f] == ' ' || fl[gl->l - gl->f] == '+' ||
 			fl[gl->l - gl->f] == '#' || fl[gl->l - gl->f] == '-' ||

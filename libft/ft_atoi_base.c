@@ -6,7 +6,7 @@
 /*   By: fdel-car <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/24 18:09:21 by fdel-car          #+#    #+#             */
-/*   Updated: 2016/05/24 18:11:31 by fdel-car         ###   ########.fr       */
+/*   Updated: 2016/05/27 20:27:06 by fdel-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int		ft_inbase(char c, int base)
 	return ((c >= '0' && c <= '9') || (c >= 'a' && c <= ('a' + base - 10)));
 }
 
-int	ft_atoi_base(char *str, int base)
+int		ft_atoi_base(char *str, int base)
 {
 	int	value;
 	int	sign;

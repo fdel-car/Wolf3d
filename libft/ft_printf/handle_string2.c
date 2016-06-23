@@ -6,7 +6,7 @@
 /*   By: fdel-car <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/12 14:19:03 by fdel-car          #+#    #+#             */
-/*   Updated: 2016/05/02 20:40:57 by fdel-car         ###   ########.fr       */
+/*   Updated: 2016/05/30 16:41:59 by fdel-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <stdarg.h>
 #include <stdlib.h>
 
-int		ft_precision_str(char const *fl, va_list ap, t_glob *gl)
+int		ft_precision_str(char const *fl, va_list ap, t_print *gl)
 {
 	gl->temp = gl->f;
 	if (ft_isdigit(fl[gl->l - gl->f]))
@@ -43,7 +43,7 @@ int		ft_precision_str(char const *fl, va_list ap, t_glob *gl)
 	}
 }
 
-int		ft_width_str(char const *fl, va_list ap, t_glob *gl)
+int		ft_width_str(char const *fl, va_list ap, t_print *gl)
 {
 	int temp;
 
@@ -72,7 +72,7 @@ int		ft_width_str(char const *fl, va_list ap, t_glob *gl)
 	}
 }
 
-int		ft_noflag(va_list ap, t_glob *gl)
+int		ft_noflag(va_list ap, t_print *gl)
 {
 	int		temp;
 	char	*str;
@@ -97,7 +97,7 @@ int		ft_noflag(va_list ap, t_glob *gl)
 	return (gl->p + ft_strlen(gl->s) + i);
 }
 
-int		ft_flags_str(const char *fl, va_list ap, t_glob *gl)
+int		ft_flags_str(const char *fl, va_list ap, t_print *gl)
 {
 	gl->i = 0;
 	if (fl[gl->l - gl->f] == ' ' || fl[gl->l - gl->f] == '+' ||

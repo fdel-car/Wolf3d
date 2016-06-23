@@ -6,13 +6,13 @@
 /*   By: fdel-car <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/23 14:28:50 by fdel-car          #+#    #+#             */
-/*   Updated: 2016/05/03 15:50:13 by fdel-car         ###   ########.fr       */
+/*   Updated: 2016/05/30 16:34:41 by fdel-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/ft_printf.h"
 
-int		ft_handle_conv(char c, va_list ap, const char *str, t_glob *glob)
+int		ft_handle_conv(char c, va_list ap, const char *str, t_print *print)
 {
 	int				i;
 	static t_handle	handle[] = {{&ft_string, 's'}, {&ft_widestring, 'S'},
@@ -27,7 +27,7 @@ int		ft_handle_conv(char c, va_list ap, const char *str, t_glob *glob)
 	while (handle[i].key != -1)
 	{
 		if (handle[i].key == c)
-			return (handle[i].handle_fonc(str, ap, glob));
+			return (handle[i].handle_fonc(str, ap, print));
 		i++;
 	}
 	return (-1);
@@ -52,7 +52,7 @@ int		ft_specifiers(const char *format)
 	return (i + 1);
 }
 
-void	ft_init(t_glob *gl)
+void	ft_init(t_print *gl)
 {
 	gl->p = -2;
 	gl->inv = 0;
@@ -67,7 +67,7 @@ void	ft_init(t_glob *gl)
 	gl->hash = 0;
 }
 
-int		ft_init_printf(char const *format, va_list ap, int i, t_glob *gl)
+int		ft_init_printf(char const *format, va_list ap, int i, t_print *gl)
 {
 	gl->j = 0;
 	ft_strclr(gl->s);
@@ -99,7 +99,7 @@ int		ft_init_printf(char const *format, va_list ap, int i, t_glob *gl)
 int		ft_printf(char const *format, ...)
 {
 	va_list ap;
-	t_glob	gl;
+	t_print	gl;
 	int		ret;
 
 	gl.ret = 0;
