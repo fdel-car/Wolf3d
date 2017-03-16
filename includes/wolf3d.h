@@ -21,7 +21,6 @@
 # include <stdio.h>
 # include "mlx.h"
 # include "libft.h"
-# include "get_next_line.h"
 
 typedef struct	s_glob
 {

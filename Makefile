@@ -6,42 +6,40 @@
 #    By: fdel-car <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/02/25 16:12:54 by fdel-car          #+#    #+#              #
-#    Updated: 2016/06/23 15:06:53 by fdel-car         ###   ########.fr        #
+#    Updated: 2016/03/21 17:38:24 by fdel-car         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = wolf3d
 
-SRCS = main.c ft_draw.c ft_shortcut.c ft_map.c ft_move_rot.c ft_color.c \
-	   ft_raycast.c ft_skybox.c
+SRCS = src/main.c src/ft_map.c src/ft_draw.c src/ft_skybox.c src/ft_shortcut.c \
+		src/ft_color.c src/ft_raycast.c src/ft_move_rot.c
 
-OBJS = $(SRCS:.c=.o)
+OBJS = main.o ft_map.o ft_draw.o ft_skybox.o ft_shortcut.o ft_color.o \
+	   ft_raycast.o ft_move_rot.o
 
 CFLAGS = -Wall -Wextra -Werror
+
 MLXFLAGS = -lmlx -framework OpenGL -framework AppKit
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	@cd libft && make re && cd ..
-	@echo "\033[1;31mCompiling Project"
+	@make re -C libft
+	@gcc  -I./includes $(MLXFLAGS) -o $@ $^ ./libft/libft.a
+	@echo "\033[1;31m$(NAME) compiled successfully"
 	@echo "\033[1A\033[0;39m"
-	@gcc $(CFLAGS) -o $@ $(OBJS) ./libft/libft.a $(MLXFLAGS)
 
-%.o: %.c
-	@echo "\033[1A\033[1;35mCreating Objects of the Project"
-	@echo "\033[1A\033[0;39m"
-	@gcc $(CFLAGS) -c $^ -I./libft/includes
+$(OBJS): $(SRCS)
+	@clang $(CFLAGS) -c $^ -I./libft/includes -I./includes
 
 clean:
-	@cd libft && make clean && cd ..
+	@make clean -C libft
 	@rm -rf $(OBJS)
 fclean: clean
-	@echo "\033[1;37mFull Cleaning"
-	@echo "\033[1A\033[0;39m"
 	@rm -rf $(NAME)
 
 re: fclean
-	@make all
+	make all
 
 .PHONY: all clean fclean re

@@ -77,7 +77,9 @@ void	ft_map(t_glob *gl)
 		while (tab[i])
 			free(tab[i++]);
 		free(tab);
+		free(str);
 	}
+	free(str);
 	close(gl->fd);
 }
 
@@ -122,6 +124,8 @@ void	ft_minimap(t_glob *gl)
 			ft_unload2(gl, str);
 		}
 		gl->mini_y = gl->mini_y + 5;
+		free(str);
 	}
+	free(str);
 	close(gl->fd);
 }
