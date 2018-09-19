@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_map.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fdel-car <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: fdel-car <fdel-car@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/19 22:32:35 by fdel-car          #+#    #+#             */
-/*   Updated: 2016/05/27 17:12:57 by fdel-car         ###   ########.fr       */
+/*   Updated: 2018/09/19 15:42:11 by fdel-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	make_map(t_glob *gl, int j, char **tab)
 		exit(0);
 	while (i < gl->size_mapx)
 	{
-		gl->map[j][i] = ft_atoi(tab[i]);
+		gl->map[j][i] = atoi(tab[i]);
 		i++;
 	}
 }
@@ -67,8 +67,8 @@ void	ft_map(t_glob *gl)
 		tab = ft_strsplit(str, ' ');
 		if (gl->data == 1)
 		{
-			gl->size_mapx = ft_atoi(tab[0]);
-			gl->size_mapy = ft_atoi(tab[1]);
+			gl->size_mapx = atoi(tab[0]);
+			gl->size_mapy = atoi(tab[1]);
 			gl->data = 0;
 		}
 		else
