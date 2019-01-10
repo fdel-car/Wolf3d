@@ -1,45 +1,48 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: fdel-car <marvin@42.fr>                    +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2016/02/25 16:12:54 by fdel-car          #+#    #+#              #
-#    Updated: 2016/03/21 17:38:24 by fdel-car         ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
-
-NAME = wolf3d
-
-SRCS = src/main.c src/ft_map.c src/ft_draw.c src/ft_skybox.c src/ft_shortcut.c \
-		src/ft_color.c src/ft_raycast.c src/ft_move_rot.c
-
-OBJS = main.o ft_map.o ft_draw.o ft_skybox.o ft_shortcut.o ft_color.o \
-	   ft_raycast.o ft_move_rot.o
-
-CFLAGS = -Wall -Wextra -Werror
-
+TARGET := wolf3d
+SRCS_DIR := ./srcs
+OBJS_DIR := ./objs
+CC := clang
+CFLAGS := -Wall -Wextra -Werror
 MLXFLAGS = -lmlx -framework OpenGL -framework AppKit
+ignore-warnings : CFLAGS := -w
 
-all: $(NAME)
+# Colors
+RESET := \033[0m
+GREEN := \033[32;01m
+ERROR := \033[31;01m
+WARN := \033[33;01m
+# Formatting
+CLEAR_LINE := \033[2K
+MOVE_CURSOR_UP := \033[1A
 
-$(NAME): $(OBJS)
-	@make re -C libft
-	@gcc  -I./includes $(MLXFLAGS) -o $@ $^ ./libft/libft.a
-	@echo "\033[1;31m$(NAME) compiled successfully"
-	@echo "\033[1A\033[0;39m"
+SRCS := $(shell find $(SRCS_DIR) -name *.c)
+OBJS := $(patsubst $(SRCS_DIR)%.c,$(OBJS_DIR)%.o,$(SRCS))
 
-$(OBJS): $(SRCS)
-	@clang $(CFLAGS) -c $^ -I./libft/includes -I./includes
+all: lib $(OBJS_DIR) $(TARGET)
+
+ignore-warnings: all
+
+$(OBJS_DIR):
+	@mkdir -p ./objs
+
+$(TARGET): $(OBJS)
+	@$(CC)  -I./includes $(MLXFLAGS) -o $@ $^ ./libft/libft.a
+	@echo "\n$(GREEN)The target $(TARGET) was compiled successfully!$(RESET)"
+
+$(OBJS_DIR)/%.o: $(SRCS_DIR)/%.c
+	@echo "$(CLEAR_LINE)Creating object of the $(TARGET) with $^...$(MOVE_CURSOR_UP)"
+	@$(CC) $(CFLAGS) -c $^ -o $@ -I./libft/includes -I./includes
+
+lib:
+	@make -C libft
 
 clean:
-	@make clean -C libft
-	@rm -rf $(OBJS)
+	@rm -rf objs/
+
 fclean: clean
-	@rm -rf $(NAME)
+	@rm -f $(TARGET)
 
 re: fclean
-	make all
+	@make all
 
-.PHONY: all clean fclean re
+.PHONY: all lib clean fclean re ignore-warnings
